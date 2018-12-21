@@ -6,6 +6,14 @@
 
 Exterminates redundant and useless whitespace.
 
+By default, all rules are of `Error` severity so they _will_ fail the build. A very conscious decision.
+
+## Usage
+
+```
+<PackageReference Include="MR.Analyzers.Whitespace" Version="1.0.0" PrivateAssets="All" />
+```
+
 ## Rules
 
 - TrailingWhitespace: Analyzer/Fixer for trailing whitespace
