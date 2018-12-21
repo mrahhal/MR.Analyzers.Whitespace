@@ -12,5 +12,14 @@ namespace MR.Analyzers.Whitespace
 				"Trivia",
 				DiagnosticSeverity.Error,
 				isEnabledByDefault: true);
+
+		public static readonly DiagnosticDescriptor WS1001_MissingFinalNewLine =
+			new DiagnosticDescriptor(
+				"WS1001",
+				"Missing final newline.",
+				"Missing final newline.",
+				"Trivia",
+				DiagnosticSeverity.Error,
+				isEnabledByDefault: true);
 	}
 }
