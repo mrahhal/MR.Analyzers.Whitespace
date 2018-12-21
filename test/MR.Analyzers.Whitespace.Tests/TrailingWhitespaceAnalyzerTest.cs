@@ -78,14 +78,14 @@ namespace ConsoleApplication1
 			VerifyCSharpFix(testCode, expectedCode);
 		}
 
-		protected override CodeFixProvider GetCSharpCodeFixProvider()
-		{
-			return new TrailingWhitespaceCodeFixProvider();
-		}
-
 		protected override DiagnosticAnalyzer GetCSharpDiagnosticAnalyzer()
 		{
 			return new TrailingWhitespaceAnalyzer();
+		}
+
+		protected override CodeFixProvider GetCSharpCodeFixProvider()
+		{
+			return new TrailingWhitespaceCodeFixProvider();
 		}
 	}
 }

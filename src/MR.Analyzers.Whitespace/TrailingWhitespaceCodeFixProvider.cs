@@ -13,6 +13,8 @@ namespace MR.Analyzers.Whitespace
 	[Shared]
 	public class TrailingWhitespaceCodeFixProvider : CodeFixProvider
 	{
+		private const string Title = "Remove trailing whitespace.";
+
 		public override ImmutableArray<string> FixableDiagnosticIds => ImmutableArray.Create(
 			WhitespaceDiagnosticDescriptors.WS1000_TrailingWhitespace.Id);
 
@@ -39,12 +41,11 @@ namespace MR.Analyzers.Whitespace
 			var span = diagnostic.Location.SourceSpan;
 			var trivia = root.FindTrivia(span.Start);
 
-			var message = "Remove trailing whitespace.";
 			context.RegisterCodeFix(
 				CodeAction.Create(
-					message,
+					Title,
 					x => RemoveWhitespaceAsync(context.Document, trivia, x),
-					equivalenceKey: message),
+					equivalenceKey: nameof(TrailingWhitespaceCodeFixProvider)),
 				diagnostic);
 		}
 
