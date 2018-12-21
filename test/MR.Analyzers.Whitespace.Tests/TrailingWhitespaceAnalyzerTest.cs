@@ -51,6 +51,7 @@ namespace ConsoleApplication1
 	{
 	}
 }";
+
 			VerifyCSharpFix(test, fixtest);
 		}
 

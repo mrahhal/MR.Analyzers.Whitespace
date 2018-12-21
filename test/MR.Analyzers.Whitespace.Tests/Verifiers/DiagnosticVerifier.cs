@@ -1,9 +1,8 @@
-using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp;
-using Microsoft.CodeAnalysis.Diagnostics;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.Diagnostics;
 using Xunit;
 
 namespace TestHelper
@@ -14,6 +13,7 @@ namespace TestHelper
 	public abstract partial class DiagnosticVerifier
 	{
 		#region To be implemented by Test classes
+
 		/// <summary>
 		/// Get the CSharp analyzer being tested - to be implemented in non-abstract class
 		/// </summary>
@@ -29,7 +29,8 @@ namespace TestHelper
 		{
 			return null;
 		}
-		#endregion
+
+		#endregion To be implemented by Test classes
 
 		#region Verifier wrappers
 
@@ -91,9 +92,10 @@ namespace TestHelper
 			VerifyDiagnosticResults(diagnostics, analyzer, expected);
 		}
 
-		#endregion
+		#endregion Verifier wrappers
 
 		#region Actual comparisons and verifications
+
 		/// <summary>
 		/// Checks each of the actual Diagnostics found and compares them with the corresponding DiagnosticResult in the array of expected results.
 		/// Diagnostics are considered equal only if the DiagnosticResultLocation, Id, Severity, and Message of the DiagnosticResult match the actual diagnostic.
@@ -103,18 +105,18 @@ namespace TestHelper
 		/// <param name="expectedResults">Diagnostic Results that should have appeared in the code</param>
 		private static void VerifyDiagnosticResults(IEnumerable<Diagnostic> actualResults, DiagnosticAnalyzer analyzer, params DiagnosticResult[] expectedResults)
 		{
-			int expectedCount = expectedResults.Count();
-			int actualCount = actualResults.Count();
+			var expectedCount = expectedResults.Count();
+			var actualCount = actualResults.Count();
 
 			if (expectedCount != actualCount)
 			{
-				string diagnosticsOutput = actualResults.Any() ? FormatDiagnostics(analyzer, actualResults.ToArray()) : "    NONE.";
+				var diagnosticsOutput = actualResults.Any() ? FormatDiagnostics(analyzer, actualResults.ToArray()) : "    NONE.";
 
 				Assert.True(false,
 					string.Format("Mismatch between number of diagnostics returned, expected \"{0}\" actual \"{1}\"\r\n\r\nDiagnostics:\r\n{2}\r\n", expectedCount, actualCount, diagnosticsOutput));
 			}
 
-			for (int i = 0; i < expectedResults.Length; i++)
+			for (var i = 0; i < expectedResults.Length; i++)
 			{
 				var actual = actualResults.ElementAt(i);
 				var expected = expectedResults[i];
@@ -141,7 +143,7 @@ namespace TestHelper
 								FormatDiagnostics(analyzer, actual)));
 					}
 
-					for (int j = 0; j < additionalLocations.Length; ++j)
+					for (var j = 0; j < additionalLocations.Length; ++j)
 					{
 						VerifyDiagnosticLocation(analyzer, actual, additionalLocations[j], expected.Locations[j + 1]);
 					}
@@ -209,9 +211,11 @@ namespace TestHelper
 				}
 			}
 		}
-		#endregion
+
+		#endregion Actual comparisons and verifications
 
 		#region Formatting Diagnostics
+
 		/// <summary>
 		/// Helper method to format a Diagnostic into an easily readable string
 		/// </summary>
@@ -221,7 +225,7 @@ namespace TestHelper
 		private static string FormatDiagnostics(DiagnosticAnalyzer analyzer, params Diagnostic[] diagnostics)
 		{
 			var builder = new StringBuilder();
-			for (int i = 0; i < diagnostics.Length; ++i)
+			for (var i = 0; i < diagnostics.Length; ++i)
 			{
 				builder.AppendLine("// " + diagnostics[i].ToString());
 
@@ -242,7 +246,7 @@ namespace TestHelper
 							Assert.True(location.IsInSource,
 								$"Test base does not currently handle diagnostics in metadata locations. Diagnostic in metadata: {diagnostics[i]}\r\n");
 
-							string resultMethodName = diagnostics[i].Location.SourceTree.FilePath.EndsWith(".cs") ? "GetCSharpResultAt" : "GetBasicResultAt";
+							var resultMethodName = diagnostics[i].Location.SourceTree.FilePath.EndsWith(".cs") ? "GetCSharpResultAt" : "GetBasicResultAt";
 							var linePosition = diagnostics[i].Location.GetLineSpan().StartLinePosition;
 
 							builder.AppendFormat("{0}({1}, {2}, {3}.{4})",
@@ -265,6 +269,7 @@ namespace TestHelper
 			}
 			return builder.ToString();
 		}
-		#endregion
+
+		#endregion Formatting Diagnostics
 	}
 }
