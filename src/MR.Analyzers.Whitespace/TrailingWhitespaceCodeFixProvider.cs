@@ -43,17 +43,27 @@ namespace MR.Analyzers.Whitespace
 			context.RegisterCodeFix(
 				CodeAction.Create(
 					message,
-					x => RemoveWhitespaceAsync(context.Document, trivia.Token, x),
+					x => RemoveWhitespaceAsync(context.Document, trivia, x),
 					equivalenceKey: message),
 				diagnostic);
 		}
 
-		private async Task<Document> RemoveWhitespaceAsync(Document document, SyntaxToken token, CancellationToken cancellationToken)
+		private async Task<Document> RemoveWhitespaceAsync(Document document, SyntaxTrivia trivia, CancellationToken cancellationToken)
 		{
 			var root = await document.GetSyntaxRootAsync(cancellationToken).ConfigureAwait(false);
+			var oldToken = trivia.Token;
+			var newToken = default(SyntaxToken);
 
-			var newToken = token.WithTrailingTrivia(SyntaxFactory.CarriageReturnLineFeed);
-			var newSyntaxRoot = root.ReplaceToken(token, newToken);
+			if (trivia.IsKind(SyntaxKind.WhitespaceTrivia))
+			{
+				newToken = oldToken.WithTrailingTrivia(SyntaxFactory.CarriageReturnLineFeed);
+			}
+			else if (trivia.IsKind(SyntaxKind.SingleLineCommentTrivia))
+			{
+				newToken = oldToken.ReplaceTrivia(trivia, SyntaxFactory.Comment(trivia.ToString().TrimEnd()));
+			}
+
+			var newSyntaxRoot = root.ReplaceToken(oldToken, newToken);
 			var newDocument = document.WithSyntaxRoot(newSyntaxRoot);
 
 			return newDocument;

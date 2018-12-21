@@ -19,7 +19,7 @@ namespace MR.Analyzers.Whitespace.Test
 		[Fact]
 		public void Basic()
 		{
-			var test =
+			var expectedCode =
 @"using System;
 
 namespace ConsoleApplication1
@@ -27,7 +27,10 @@ namespace ConsoleApplication1
 	class TypeName
 	{
 	}
-}".Replace("TypeName", "TypeName "); // To avoid VS formatting the document correctly
+}";
+
+			var testCode = expectedCode
+				.Replace("TypeName", "TypeName ");
 
 			var expected = new DiagnosticResult
 			{
@@ -40,19 +43,39 @@ namespace ConsoleApplication1
 				},
 			};
 
-			VerifyCSharpDiagnostic(test, expected);
+			VerifyCSharpDiagnostic(testCode, expected);
 
-			var fixtest =
+			VerifyCSharpFix(testCode, expectedCode);
+		}
+
+		[Fact]
+		public void SingleLineComments()
+		{
+			var expectedCode =
 @"using System;
 
+// Foo
 namespace ConsoleApplication1
 {
-	class TypeName
-	{
-	}
 }";
 
-			VerifyCSharpFix(test, fixtest);
+			var testCode = expectedCode
+				.Replace("Foo", "Foo   ");
+
+			var expected = new DiagnosticResult
+			{
+				Id = WhitespaceDiagnosticDescriptors.WS1000_TrailingWhitespace.Id,
+				Message = "Trailing whitespace detected.",
+				Severity = DiagnosticSeverity.Error,
+				Locations = new[]
+				{
+					new DiagnosticResultLocation("Test0.cs", 3, 7)
+				},
+			};
+
+			VerifyCSharpDiagnostic(testCode, expected);
+
+			VerifyCSharpFix(testCode, expectedCode);
 		}
 
 		protected override CodeFixProvider GetCSharpCodeFixProvider()
