@@ -8,16 +8,14 @@
 
   <PropertyGroup>
     <PackageId>MR.Analyzers.Whitespace</PackageId>
-    <PackageVersion>1.0.0.0</PackageVersion>
+    <PackageVersion>1.0.0</PackageVersion>
     <Authors>mrahhal</Authors>
-    <PackageLicenseUrl>https://github.com/mrahhal/MR.Analyzers.Whitespace/LICENSE.txt</PackageLicenseUrl>
+    <PackageLicenseUrl>https://github.com/mrahhal/MR.Analyzers.Whitespace/blob/master/LICENSE.txt</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/mrahhal/MR.Analyzers.Whitespace</PackageProjectUrl>
     <RepositoryUrl>https://github.com/mrahhal/MR.Analyzers.Whitespace</RepositoryUrl>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Description>MR.Analyzers.Whitespace</Description>
-    <PackageReleaseNotes>Summary of changes made in this release of the package.</PackageReleaseNotes>
-    <Copyright>Copyright</Copyright>
-    <PackageTags>MR.Analyzers.Whitespace, analyzers</PackageTags>
+    <Description>Exterminates redundant and useless whitespace.</Description>
+    <PackageTags>MR.Analyzers.Whitespace, analyzers, codefixer, whitespace</PackageTags>
     <NoPackageAnalysis>true</NoPackageAnalysis>
   </PropertyGroup>
 
