@@ -3,20 +3,11 @@
   <PropertyGroup>
     <TargetFramework>netstandard1.3</TargetFramework>
     <IncludeBuildOutput>false</IncludeBuildOutput>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageId>MR.Analyzers.Whitespace</PackageId>
-    <PackageVersion>1.0.0</PackageVersion>
-    <Authors>mrahhal</Authors>
-    <PackageLicenseUrl>https://github.com/mrahhal/MR.Analyzers.Whitespace/blob/master/LICENSE.txt</PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/mrahhal/MR.Analyzers.Whitespace</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/mrahhal/MR.Analyzers.Whitespace</RepositoryUrl>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <Description>Exterminates redundant and useless whitespace.</Description>
-    <PackageTags>MR.Analyzers.Whitespace, analyzers, codefixer, whitespace</PackageTags>
-    <NoPackageAnalysis>true</NoPackageAnalysis>
+    <PackageTags>roslyn, analyzer, codefixer, whitespace</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>

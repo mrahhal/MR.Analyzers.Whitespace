@@ -52,7 +52,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MR.Analyzers.Whitespace\MR.Analyzers.Whitespace.csproj">
+    <ProjectReference Include="..\..\src\MR.Analyzers.Whitespace\MR.Analyzers.Whitespace.csproj">
       <Project>{518D73C8-6845-41D8-A8CC-BDFEAB1041DE}</Project>
       <Name>MR.Analyzers.Whitespace</Name>
       <IncludeOutputGroupsInVSIX>BuiltProjectOutputGroup%3bBuiltProjectOutputGroupDependencies%3bGetCopyToOutputDirectoryItems%3bSatelliteDllsProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
