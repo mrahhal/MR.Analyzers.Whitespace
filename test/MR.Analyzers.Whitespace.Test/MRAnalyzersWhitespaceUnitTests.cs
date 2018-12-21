@@ -1,4 +1,3 @@
-using System;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CodeFixes;
 using Microsoft.CodeAnalysis.Diagnostics;
@@ -9,7 +8,7 @@ namespace MR.Analyzers.Whitespace.Test
 {
 	public class UnitTest : CodeFixVerifier
 	{
-		//No diagnostics expected to show up
+		// No diagnostics expected to show up
 		[Fact]
 		public void TestMethod1()
 		{
@@ -18,48 +17,39 @@ namespace MR.Analyzers.Whitespace.Test
 			VerifyCSharpDiagnostic(test);
 		}
 
-		//Diagnostic and CodeFix both triggered and checked for
+		// Diagnostic and CodeFix both triggered and checked for
 		[Fact]
 		public void TestMethod2()
 		{
-			var test = @"
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Diagnostics;
+			var test =
+@"using System;
 
 namespace ConsoleApplication1
 {
 	class TypeName
 	{
 	}
-}";
+}".Replace("TypeName", "TypeName "); // To avoid VS formatting the document correctly
+
 			var expected = new DiagnosticResult
 			{
 				Id = "MRAnalyzersWhitespace",
-				Message = String.Format("Type name '{0}' contains lowercase letters", "TypeName"),
-				Severity = DiagnosticSeverity.Warning,
+				Message = "Trailing whitespace detected",
+				Severity = DiagnosticSeverity.Error,
 				Locations = new[]
 				{
-					new DiagnosticResultLocation("Test0.cs", 11, 8)
+					new DiagnosticResultLocation("Test0.cs", 5, 16)
 				},
 			};
 
 			VerifyCSharpDiagnostic(test, expected);
 
-			var fixtest = @"
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Diagnostics;
+			var fixtest =
+@"using System;
 
 namespace ConsoleApplication1
 {
-	class TYPENAME
+	class TypeName
 	{
 	}
 }";
