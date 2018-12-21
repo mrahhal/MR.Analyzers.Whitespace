@@ -6,20 +6,18 @@ using Xunit;
 
 namespace MR.Analyzers.Whitespace.Test
 {
-	public class UnitTest : CodeFixVerifier
+	public class TrailingWhitespaceAnalyzerTest : CodeFixVerifier
 	{
-		// No diagnostics expected to show up
 		[Fact]
-		public void TestMethod1()
+		public void Bare()
 		{
 			var test = @"";
 
 			VerifyCSharpDiagnostic(test);
 		}
 
-		// Diagnostic and CodeFix both triggered and checked for
 		[Fact]
-		public void TestMethod2()
+		public void Basic()
 		{
 			var test =
 @"using System;
@@ -33,8 +31,8 @@ namespace ConsoleApplication1
 
 			var expected = new DiagnosticResult
 			{
-				Id = "MRAnalyzersWhitespace",
-				Message = "Trailing whitespace detected",
+				Id = WhitespaceDiagnosticDescriptors.WS1000_TrailingWhitespace.Id,
+				Message = "Trailing whitespace detected.",
 				Severity = DiagnosticSeverity.Error,
 				Locations = new[]
 				{
@@ -58,12 +56,12 @@ namespace ConsoleApplication1
 
 		protected override CodeFixProvider GetCSharpCodeFixProvider()
 		{
-			return new MRAnalyzersWhitespaceCodeFixProvider();
+			return new TrailingWhitespaceCodeFixProvider();
 		}
 
 		protected override DiagnosticAnalyzer GetCSharpDiagnosticAnalyzer()
 		{
-			return new MRAnalyzersWhitespaceAnalyzer();
+			return new TrailingWhitespaceAnalyzer();
 		}
 	}
 }
