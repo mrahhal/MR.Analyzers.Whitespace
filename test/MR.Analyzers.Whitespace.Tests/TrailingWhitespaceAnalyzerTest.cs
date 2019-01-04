@@ -78,6 +78,19 @@ namespace ConsoleApplication1
 			VerifyCSharpFix(testCode, expectedCode);
 		}
 
+		[Fact]
+		public void SingleLineCommentsOnSameLineAsCode()
+		{
+			var test =
+@"using System;
+
+namespace ConsoleApplication1 // Foo
+{
+}";
+
+			VerifyCSharpDiagnostic(test);
+		}
+
 		protected override DiagnosticAnalyzer GetCSharpDiagnosticAnalyzer()
 		{
 			return new TrailingWhitespaceAnalyzer();

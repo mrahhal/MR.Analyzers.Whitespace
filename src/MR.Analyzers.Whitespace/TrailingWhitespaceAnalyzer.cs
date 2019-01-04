@@ -26,7 +26,9 @@ namespace MR.Analyzers.Whitespace
 
 			var trailingWhitespace = root.DescendantTrivia()
 				.Where(t => t.IsKind(SyntaxKind.EndOfLineTrivia))
-				.Where(endOfLineTrivia => endOfLineTrivia.Token.TrailingTrivia.Count > 1)
+				.Where(endOfLineTrivia =>
+					!endOfLineTrivia.Token.TrailingTrivia.Any(x => x.IsKind(SyntaxKind.SingleLineCommentTrivia)) &&
+					endOfLineTrivia.Token.TrailingTrivia.Count > 1)
 				.Select(endOfLineTrivia => endOfLineTrivia.Token.TrailingTrivia[0]);
 
 			foreach (var trivia in trailingWhitespace)
