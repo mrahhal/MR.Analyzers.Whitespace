@@ -36,7 +36,7 @@ foreach ($srcProject in $srcProjects) {
 ExitIfFailed
 
 foreach ($testProject in $testProjects) {
-	dotnet test $testProject --no-restore
+	dotnet test $testProject --no-restore -verbosity:diagnostic
 }
 ExitIfFailed
 
