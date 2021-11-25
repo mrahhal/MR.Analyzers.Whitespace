@@ -29,8 +29,15 @@ namespace ConsoleApplication1
 	}
 }";
 
-			var testCode = expectedCode
-				.Replace("TypeName", "TypeName ");
+			var testCode =
+@"using System;
+
+namespace ConsoleApplication1
+{
+	class TypeName 
+	{
+	}
+}";
 
 			var expected = new DiagnosticResult
 			{
