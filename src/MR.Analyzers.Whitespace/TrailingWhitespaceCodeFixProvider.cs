@@ -57,7 +57,7 @@ namespace MR.Analyzers.Whitespace
 
 			if (trivia.IsKind(SyntaxKind.WhitespaceTrivia))
 			{
-				newToken = oldToken.WithTrailingTrivia(SyntaxFactory.CarriageReturnLineFeed);
+				newToken = oldToken.WithTrailingTrivia(EndOfLineHelper.EndOfLine);
 			}
 			else if (trivia.IsKind(SyntaxKind.SingleLineCommentTrivia))
 			{

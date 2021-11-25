@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Immutable;
+﻿using System.Collections.Immutable;
 using System.Composition;
 using System.Linq;
 using System.Threading;
@@ -7,7 +6,6 @@ using System.Threading.Tasks;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CodeActions;
 using Microsoft.CodeAnalysis.CodeFixes;
-using Microsoft.CodeAnalysis.CSharp;
 
 namespace MR.Analyzers.Whitespace
 {
@@ -16,7 +14,6 @@ namespace MR.Analyzers.Whitespace
 	public class MissingFinalNewLineCodeFixProvider : CodeFixProvider
 	{
 		private const string Title = "Insert a newline at the end of the file.";
-		private readonly SyntaxTrivia EndOfLine = GetEndOfLineTrivia();
 
 		public override ImmutableArray<string> FixableDiagnosticIds => ImmutableArray.Create(
 			WhitespaceDiagnosticDescriptors.WS1001_MissingFinalNewLine.Id);
@@ -47,27 +44,12 @@ namespace MR.Analyzers.Whitespace
 
 			var oldToken = syntaxRoot.GetLastToken();
 
-			var newTrivia = oldToken.TrailingTrivia.Insert(0, EndOfLine);
+			var newTrivia = oldToken.TrailingTrivia.Insert(0, EndOfLineHelper.EndOfLine);
 			var newToken = oldToken.WithTrailingTrivia(newTrivia);
 			var newSyntaxRoot = syntaxRoot.ReplaceToken(oldToken, newToken);
 			var newDocument = document.WithSyntaxRoot(newSyntaxRoot);
 
 			return newDocument;
-		}
-
-		private static SyntaxTrivia GetEndOfLineTrivia()
-		{
-			var text = Environment.NewLine;
-
-			switch (text)
-			{
-				case "\n":
-					return SyntaxFactory.LineFeed;
-				case "\r\n":
-					return SyntaxFactory.CarriageReturnLineFeed;
-			}
-
-			return SyntaxFactory.LineFeed;
 		}
 	}
 }
