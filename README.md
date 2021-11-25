@@ -11,7 +11,7 @@ By default, all rules are of `Error` severity. So they _will_ fail the build, a 
 ## Include in your project
 
 ```xml
-<PackageReference Include="MR.Analyzers.Whitespace" Version="1.0.1" PrivateAssets="All" />
+<PackageReference Include="MR.Analyzers.Whitespace" Version="1.0.2" PrivateAssets="All" />
 ```
 
 ## Rules
