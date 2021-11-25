@@ -8,10 +8,10 @@ Exterminates redundant and useless whitespace :fire:
 
 By default, all rules are of `Error` severity. So they _will_ fail the build, a very conscious decision.
 
-## Usage
+## Include in your project
 
-```
-<PackageReference Include="MR.Analyzers.Whitespace" Version="1.0.0" PrivateAssets="All" />
+```xml
+<PackageReference Include="MR.Analyzers.Whitespace" Version="1.0.1" PrivateAssets="All" />
 ```
 
 ## Rules
