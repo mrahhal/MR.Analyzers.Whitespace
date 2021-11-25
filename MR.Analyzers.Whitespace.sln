@@ -17,6 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "global", "global", "{51263C
 		.editorconfig = .editorconfig
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
+		.github\workflows\ci.yml = .github\workflows\ci.yml
 		global.json = global.json
 		README.md = README.md
 	EndProjectSection
@@ -25,14 +26,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MR.Analyzers.Whitespace.Tes
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{89238275-F7D7-48F3-8889-AD1D2E76A714}"
 	ProjectSection(SolutionItems) = preProject
-		appveyor.yml = appveyor.yml
-		build.cake = build.cake
+		build.ps1 = build.ps1
 		Directory.Build.props = Directory.Build.props
 		Directory.Build.targets = Directory.Build.targets
-		build\index.cake = build\index.cake
-		build\util.cake = build\util.cake
-		build\version.cake = build\version.cake
-		build\version.props = build\version.props
+		nuget-push.ps1 = nuget-push.ps1
+		version.props = version.props
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VSIX", "VSIX", "{51D9D999-533F-4B66-BFAE-CE03B0F19447}"

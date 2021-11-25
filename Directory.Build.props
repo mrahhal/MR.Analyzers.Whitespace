@@ -1,14 +1,13 @@
 ﻿<Project>
 
   <PropertyGroup>
-    <NoWarn>$(NoWarn);1591;1587</NoWarn>
     <Product>MR.Analyzers.Whitespace</Product>
+    <NoWarn>$(NoWarn);1591</NoWarn>
     <RepositoryUrl>https://github.com/mrahhal/MR.Analyzers.Whitespace</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <RepositoryRoot>$(MSBuildThisFileDirectory)</RepositoryRoot>
-    <Authors>Mohammad Rahhal @mrahhal</Authors>
+    <Authors>Mohammad Rahhal</Authors>
     <PackageProjectUrl>https://github.com/mrahhal/MR.Analyzers.Whitespace</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/mrahhal/MR.Analyzers.Whitespace/blob/master/LICENSE.txt</PackageLicenseUrl>
+    <PackageLicense>https://github.com/mrahhal/MR.Analyzers.Whitespace/blob/main/LICENSE.txt</PackageLicense>
   </PropertyGroup>
 
 </Project>
