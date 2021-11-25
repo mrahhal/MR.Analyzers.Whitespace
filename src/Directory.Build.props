@@ -4,6 +4,8 @@
   <Import Project="..\version.props" />
 
   <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
     <GenerateDocumentationFile>false</GenerateDocumentationFile>
   </PropertyGroup>
 

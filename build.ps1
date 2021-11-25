@@ -1,3 +1,7 @@
+function WriteFailed($Text) {
+	Write-Host $Text -ForegroundColor Red
+}
+
 function ExitIfFailed() {
 	if ($LASTEXITCODE -ne 0) {
 		WriteFailed "Failed with code $LASTEXITCODE. Exiting..."
@@ -10,7 +14,7 @@ function CreateStamp() {
 }
 
 if (Test-Path artifacts) {
-	rm -r artifacts
+	Remove-Item -Recurse artifacts
 }
 
 dotnet restore

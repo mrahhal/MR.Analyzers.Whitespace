@@ -1,11 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.3</TargetFramework>
-    <IncludeBuildOutput>false</IncludeBuildOutput>
-  </PropertyGroup>
-
-  <PropertyGroup>
     <Description>Exterminates redundant and useless whitespace.</Description>
     <PackageTags>roslyn;analyzer;codefixer;whitespace</PackageTags>
   </PropertyGroup>
