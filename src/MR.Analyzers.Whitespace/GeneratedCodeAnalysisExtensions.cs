@@ -24,7 +24,7 @@ namespace MR.Analyzers.Whitespace
 
 			var firstToken = root.GetFirstToken();
 			SyntaxTriviaList trivia;
-			if (firstToken == default(SyntaxToken))
+			if (firstToken == default)
 			{
 				var token = ((CompilationUnitSyntax)root).EndOfFileToken;
 				if (!token.HasLeadingTrivia) return false;

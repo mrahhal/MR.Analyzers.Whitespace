@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Unreleased
 
-Nothing yet.
+- Don't run trailing whitespace analyzer if file is generated.
 
 ## 1.0.2 - 2021-11-25
 
