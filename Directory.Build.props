@@ -7,7 +7,7 @@
     <RepositoryType>git</RepositoryType>
     <Authors>Mohammad Rahhal</Authors>
     <PackageProjectUrl>https://github.com/mrahhal/MR.Analyzers.Whitespace</PackageProjectUrl>
-    <PackageLicense>https://github.com/mrahhal/MR.Analyzers.Whitespace/blob/main/LICENSE.txt</PackageLicense>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
 </Project>
