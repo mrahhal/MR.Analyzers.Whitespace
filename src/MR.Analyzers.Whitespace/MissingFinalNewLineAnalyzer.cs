@@ -10,7 +10,7 @@ namespace MR.Analyzers.Whitespace
 	public class MissingFinalNewLineAnalyzer : DiagnosticAnalyzer
 	{
 		public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics { get; } = ImmutableArray.Create(
-			WhitespaceDiagnosticDescriptors.WS1001_MissingFinalNewLine);
+			DiagnosticDescriptors.WS1001_MissingFinalNewLine);
 
 		public override void Initialize(AnalysisContext context)
 		{
@@ -35,7 +35,7 @@ namespace MR.Analyzers.Whitespace
 			var span = TextSpan.FromBounds(lastToken.Span.Start, lastToken.Span.End);
 			var location = Location.Create(context.Tree, span);
 			context.ReportDiagnostic(Diagnostic.Create(
-				WhitespaceDiagnosticDescriptors.WS1001_MissingFinalNewLine,
+				DiagnosticDescriptors.WS1001_MissingFinalNewLine,
 				location));
 		}
 	}

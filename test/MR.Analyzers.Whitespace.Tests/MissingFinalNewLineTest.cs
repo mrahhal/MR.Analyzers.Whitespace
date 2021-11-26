@@ -24,7 +24,7 @@ namespace MR.Analyzers.Whitespace.Test
 
 			var expected = new DiagnosticResult
 			{
-				Id = WhitespaceDiagnosticDescriptors.WS1001_MissingFinalNewLine.Id,
+				Id = DiagnosticDescriptors.WS1001_MissingFinalNewLine.Id,
 				Message = "Missing final newline.",
 				Severity = DiagnosticSeverity.Error,
 				Locations = new[]

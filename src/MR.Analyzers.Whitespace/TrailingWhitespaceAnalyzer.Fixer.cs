@@ -16,7 +16,7 @@ namespace MR.Analyzers.Whitespace
 		private const string Title = "Remove trailing whitespace.";
 
 		public override ImmutableArray<string> FixableDiagnosticIds => ImmutableArray.Create(
-			WhitespaceDiagnosticDescriptors.WS1000_TrailingWhitespace.Id);
+			DiagnosticDescriptors.WS1000_TrailingWhitespace.Id);
 
 		public sealed override FixAllProvider GetFixAllProvider()
 		{
@@ -31,7 +31,7 @@ namespace MR.Analyzers.Whitespace
 			}
 
 			var diagnostic = context.Diagnostics[0];
-			if (diagnostic.Descriptor.Id != WhitespaceDiagnosticDescriptors.WS1000_TrailingWhitespace.Id)
+			if (diagnostic.Descriptor.Id != DiagnosticDescriptors.WS1000_TrailingWhitespace.Id)
 			{
 				return;
 			}

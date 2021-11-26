@@ -2,7 +2,7 @@
 
 namespace MR.Analyzers.Whitespace
 {
-	public static class WhitespaceDiagnosticDescriptors
+	public static class DiagnosticDescriptors
 	{
 		public static readonly DiagnosticDescriptor WS1000_TrailingWhitespace =
 			new DiagnosticDescriptor(

@@ -34,7 +34,7 @@ namespace ConsoleApplication1
 
 			var expected = new DiagnosticResult
 			{
-				Id = WhitespaceDiagnosticDescriptors.WS1000_TrailingWhitespace.Id,
+				Id = DiagnosticDescriptors.WS1000_TrailingWhitespace.Id,
 				Message = "Trailing whitespace detected.",
 				Severity = DiagnosticSeverity.Error,
 				Locations = new[]
@@ -64,7 +64,7 @@ namespace ConsoleApplication1
 
 			var expected = new DiagnosticResult
 			{
-				Id = WhitespaceDiagnosticDescriptors.WS1000_TrailingWhitespace.Id,
+				Id = DiagnosticDescriptors.WS1000_TrailingWhitespace.Id,
 				Message = "Trailing whitespace detected.",
 				Severity = DiagnosticSeverity.Error,
 				Locations = new[]

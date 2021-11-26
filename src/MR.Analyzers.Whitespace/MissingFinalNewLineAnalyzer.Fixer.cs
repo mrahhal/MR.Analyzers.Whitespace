@@ -16,7 +16,7 @@ namespace MR.Analyzers.Whitespace
 		private const string Title = "Insert a newline at the end of the file.";
 
 		public override ImmutableArray<string> FixableDiagnosticIds => ImmutableArray.Create(
-			WhitespaceDiagnosticDescriptors.WS1001_MissingFinalNewLine.Id);
+			DiagnosticDescriptors.WS1001_MissingFinalNewLine.Id);
 
 		public sealed override FixAllProvider GetFixAllProvider()
 		{

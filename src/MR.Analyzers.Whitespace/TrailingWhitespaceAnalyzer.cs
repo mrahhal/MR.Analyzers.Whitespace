@@ -11,7 +11,7 @@ namespace MR.Analyzers.Whitespace
 	public class TrailingWhitespaceAnalyzer : DiagnosticAnalyzer
 	{
 		public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics { get; } = ImmutableArray.Create(
-			WhitespaceDiagnosticDescriptors.WS1000_TrailingWhitespace);
+			DiagnosticDescriptors.WS1000_TrailingWhitespace);
 
 		public override void Initialize(AnalysisContext context)
 		{
@@ -39,7 +39,7 @@ namespace MR.Analyzers.Whitespace
 			foreach (var trivia in trailingWhitespace)
 			{
 				context.ReportDiagnostic(Diagnostic.Create(
-					WhitespaceDiagnosticDescriptors.WS1000_TrailingWhitespace,
+					DiagnosticDescriptors.WS1000_TrailingWhitespace,
 					trivia.GetLocation()));
 			}
 
@@ -58,7 +58,7 @@ namespace MR.Analyzers.Whitespace
 				var location = Location.Create(context.Tree, span);
 
 				context.ReportDiagnostic(Diagnostic.Create(
-					WhitespaceDiagnosticDescriptors.WS1000_TrailingWhitespace,
+					DiagnosticDescriptors.WS1000_TrailingWhitespace,
 					location));
 			}
 		}
