@@ -24,7 +24,7 @@ namespace MR.Analyzers.Whitespace.Test
 
 			var expected = new DiagnosticResult
 			{
-				Id = DiagnosticDescriptors.WS1001_MissingFinalNewLine.Id,
+				Id = DiagnosticDescriptors.WS1001_AddFinalNewLine.Id,
 				Message = "Missing final newline.",
 				Severity = DiagnosticSeverity.Error,
 				Locations = new[]
@@ -52,12 +52,12 @@ namespace MR.Analyzers.Whitespace.Test
 
 		protected override DiagnosticAnalyzer GetCSharpDiagnosticAnalyzer()
 		{
-			return new MissingFinalNewLineAnalyzer();
+			return new AddFinalNewLineAnalyzer();
 		}
 
 		protected override CodeFixProvider GetCSharpCodeFixProvider()
 		{
-			return new MissingFinalNewLineCodeFixProvider();
+			return new AddFinalNewLineCodeFixProvider();
 		}
 	}
 }

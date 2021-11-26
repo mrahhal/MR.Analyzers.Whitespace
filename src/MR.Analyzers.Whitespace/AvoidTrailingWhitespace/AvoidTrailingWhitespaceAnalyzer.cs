@@ -8,10 +8,10 @@ using Microsoft.CodeAnalysis.Text;
 namespace MR.Analyzers.Whitespace
 {
 	[DiagnosticAnalyzer(LanguageNames.CSharp)]
-	public class TrailingWhitespaceAnalyzer : DiagnosticAnalyzer
+	public class AvoidTrailingWhitespaceAnalyzer : DiagnosticAnalyzer
 	{
 		public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics { get; } = ImmutableArray.Create(
-			DiagnosticDescriptors.WS1000_TrailingWhitespace);
+			DiagnosticDescriptors.WS1000_AvoidTrailingWhitespace);
 
 		public override void Initialize(AnalysisContext context)
 		{
@@ -37,7 +37,7 @@ namespace MR.Analyzers.Whitespace
 			foreach (var trivia in trailingWhitespace)
 			{
 				context.ReportDiagnostic(Diagnostic.Create(
-					DiagnosticDescriptors.WS1000_TrailingWhitespace,
+					DiagnosticDescriptors.WS1000_AvoidTrailingWhitespace,
 					trivia.GetLocation()));
 			}
 
@@ -56,7 +56,7 @@ namespace MR.Analyzers.Whitespace
 				var location = Location.Create(context.Tree, span);
 
 				context.ReportDiagnostic(Diagnostic.Create(
-					DiagnosticDescriptors.WS1000_TrailingWhitespace,
+					DiagnosticDescriptors.WS1000_AvoidTrailingWhitespace,
 					location));
 			}
 		}

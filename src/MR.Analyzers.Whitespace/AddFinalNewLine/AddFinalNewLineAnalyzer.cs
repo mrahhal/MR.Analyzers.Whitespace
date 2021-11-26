@@ -7,10 +7,10 @@ using Microsoft.CodeAnalysis.Text;
 namespace MR.Analyzers.Whitespace
 {
 	[DiagnosticAnalyzer(LanguageNames.CSharp)]
-	public class MissingFinalNewLineAnalyzer : DiagnosticAnalyzer
+	public class AddFinalNewLineAnalyzer : DiagnosticAnalyzer
 	{
 		public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics { get; } = ImmutableArray.Create(
-			DiagnosticDescriptors.WS1001_MissingFinalNewLine);
+			DiagnosticDescriptors.WS1001_AddFinalNewLine);
 
 		public override void Initialize(AnalysisContext context)
 		{
@@ -33,7 +33,7 @@ namespace MR.Analyzers.Whitespace
 			var span = TextSpan.FromBounds(lastToken.Span.Start, lastToken.Span.End);
 			var location = Location.Create(context.Tree, span);
 			context.ReportDiagnostic(Diagnostic.Create(
-				DiagnosticDescriptors.WS1001_MissingFinalNewLine,
+				DiagnosticDescriptors.WS1001_AddFinalNewLine,
 				location));
 		}
 	}

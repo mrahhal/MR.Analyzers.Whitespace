@@ -34,7 +34,7 @@ namespace ConsoleApplication1
 
 			var expected = new DiagnosticResult
 			{
-				Id = DiagnosticDescriptors.WS1000_TrailingWhitespace.Id,
+				Id = DiagnosticDescriptors.WS1000_AvoidTrailingWhitespace.Id,
 				Message = "Trailing whitespace detected.",
 				Severity = DiagnosticSeverity.Error,
 				Locations = new[]
@@ -64,7 +64,7 @@ namespace ConsoleApplication1
 
 			var expected = new DiagnosticResult
 			{
-				Id = DiagnosticDescriptors.WS1000_TrailingWhitespace.Id,
+				Id = DiagnosticDescriptors.WS1000_AvoidTrailingWhitespace.Id,
 				Message = "Trailing whitespace detected.",
 				Severity = DiagnosticSeverity.Error,
 				Locations = new[]
@@ -93,12 +93,12 @@ namespace ConsoleApplication1 // Foo
 
 		protected override DiagnosticAnalyzer GetCSharpDiagnosticAnalyzer()
 		{
-			return new TrailingWhitespaceAnalyzer();
+			return new AvoidTrailingWhitespaceAnalyzer();
 		}
 
 		protected override CodeFixProvider GetCSharpCodeFixProvider()
 		{
-			return new TrailingWhitespaceCodeFixProvider();
+			return new AvoidTrailingWhitespaceCodeFixProvider();
 		}
 	}
 }
