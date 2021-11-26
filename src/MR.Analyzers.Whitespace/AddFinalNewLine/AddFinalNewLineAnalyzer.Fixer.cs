@@ -1,7 +1,5 @@
 ﻿using System.Collections.Immutable;
 using System.Composition;
-using System.Threading;
-using System.Threading.Tasks;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CodeActions;
 using Microsoft.CodeAnalysis.CodeFixes;
@@ -40,8 +38,8 @@ public class AddFinalNewLineCodeFixProvider : CodeFixProvider
 		var newTrivia = oldToken.TrailingTrivia.Insert(0, EndOfLineHelper.EndOfLine);
 		var newToken = oldToken.WithTrailingTrivia(newTrivia);
 
-		var newSyntaxRoot = root.ReplaceToken(oldToken, newToken);
-		var newDocument = document.WithSyntaxRoot(newSyntaxRoot);
+		var newRoot = root.ReplaceToken(oldToken, newToken);
+		var newDocument = document.WithSyntaxRoot(newRoot);
 
 		return Task.FromResult(newDocument);
 	}

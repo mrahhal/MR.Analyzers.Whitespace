@@ -3,7 +3,7 @@
     <Metadata>
         <Identity Id="MR.Analyzers.Whitespace.VSIX.57e3d92e-44a7-4025-b453-bea40400c641" Version="1.0" Language="en-US" Publisher="Mohammad Rahhal" />
         <DisplayName>MR.Analyzers.Whitespace.VSIX</DisplayName>
-        <Description xml:space="preserve">MR.Analyzers.Whitespace.VSIXMR.Analyzers.Whitespace.VSIXTest</Description>
+        <Description xml:space="preserve">MR.Analyzers.Whitespace.VSIX</Description>
     </Metadata>
     <Installation>
         <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[15.0, 16.0)" />
