@@ -6,7 +6,7 @@ using Xunit;
 
 namespace MR.Analyzers.Whitespace.Test
 {
-	public class TrailingWhitespaceAnalyzerTest : CodeFixVerifier
+	public class AvoidTrailingWhitespaceTest : CodeFixVerifier
 	{
 		[Fact]
 		public void Bare()
@@ -35,7 +35,7 @@ namespace ConsoleApplication1
 			var expected = new DiagnosticResult
 			{
 				Id = DiagnosticDescriptors.WS1000_AvoidTrailingWhitespace.Id,
-				Message = "Trailing whitespace detected.",
+				Message = (string)DiagnosticDescriptors.WS1000_AvoidTrailingWhitespace.MessageFormat,
 				Severity = DiagnosticSeverity.Error,
 				Locations = new[]
 				{
@@ -65,7 +65,7 @@ namespace ConsoleApplication1
 			var expected = new DiagnosticResult
 			{
 				Id = DiagnosticDescriptors.WS1000_AvoidTrailingWhitespace.Id,
-				Message = "Trailing whitespace detected.",
+				Message = (string)DiagnosticDescriptors.WS1000_AvoidTrailingWhitespace.MessageFormat,
 				Severity = DiagnosticSeverity.Error,
 				Locations = new[]
 				{

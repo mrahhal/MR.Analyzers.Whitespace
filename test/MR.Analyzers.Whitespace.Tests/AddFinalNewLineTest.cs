@@ -6,7 +6,7 @@ using Xunit;
 
 namespace MR.Analyzers.Whitespace.Test
 {
-	public class MissingFinalNewLineTest : CodeFixVerifier
+	public class AddFinalNewLineTest : CodeFixVerifier
 	{
 		[Fact]
 		public void Basic()
@@ -25,7 +25,7 @@ namespace MR.Analyzers.Whitespace.Test
 			var expected = new DiagnosticResult
 			{
 				Id = DiagnosticDescriptors.WS1001_AddFinalNewLine.Id,
-				Message = "Missing final newline.",
+				Message = (string)DiagnosticDescriptors.WS1001_AddFinalNewLine.MessageFormat,
 				Severity = DiagnosticSeverity.Error,
 				Locations = new[]
 				{
