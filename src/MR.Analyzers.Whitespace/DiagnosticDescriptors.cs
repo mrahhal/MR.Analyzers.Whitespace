@@ -4,12 +4,17 @@ namespace MR.Analyzers.Whitespace
 {
 	public static class DiagnosticDescriptors
 	{
+		public static class Categories
+		{
+			public const string Trivia = nameof(Trivia);
+		}
+
 		public static readonly DiagnosticDescriptor WS1000_AvoidTrailingWhitespace =
 			new DiagnosticDescriptor(
 				"WS1000",
 				"Avoid trailing whitespace",
 				"Avoid trailing whitespace",
-				"Trivia",
+				Categories.Trivia,
 				DiagnosticSeverity.Error,
 				isEnabledByDefault: true);
 
@@ -18,7 +23,7 @@ namespace MR.Analyzers.Whitespace
 				"WS1001",
 				"Add final newline",
 				"Add final newline",
-				"Trivia",
+				Categories.Trivia,
 				DiagnosticSeverity.Error,
 				isEnabledByDefault: true);
 	}
