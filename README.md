@@ -8,8 +8,9 @@ Exterminates redundant and useless whitespace :fire:
 
 By default, all rules are of `Error` severity. So they _will_ fail the build, a very conscious decision.
 
-## Include in your project
+## Usage
 
+Add the following in your csproj:
 ```xml
 <PackageReference Include="MR.Analyzers.Whitespace" Version="1.0.2" PrivateAssets="All" />
 ```
