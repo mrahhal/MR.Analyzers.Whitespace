@@ -6,43 +6,43 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CodeActions;
 using Microsoft.CodeAnalysis.CodeFixes;
 
-namespace MR.Analyzers.Whitespace
+namespace MR.Analyzers.Whitespace;
+
+[ExportCodeFixProvider(LanguageNames.CSharp)]
+[Shared]
+public class AddFinalNewLineCodeFixProvider : CodeFixProvider
 {
-	[ExportCodeFixProvider(LanguageNames.CSharp)]
-	[Shared]
-	public class AddFinalNewLineCodeFixProvider : CodeFixProvider
+	private const string Title = "Insert a newline at the end of the file";
+
+	public override ImmutableArray<string> FixableDiagnosticIds => ImmutableArray.Create(
+		DiagnosticDescriptors.WS1001_AddFinalNewLine.Id);
+
+	public sealed override FixAllProvider GetFixAllProvider() => WellKnownFixAllProviders.BatchFixer;
+
+	public sealed override async Task RegisterCodeFixesAsync(CodeFixContext context)
 	{
-		private const string Title = "Insert a newline at the end of the file";
+		var root = await context.Document.GetSyntaxRootAsync(context.CancellationToken).ConfigureAwait(false);
+		if (root == null) return;
 
-		public override ImmutableArray<string> FixableDiagnosticIds => ImmutableArray.Create(
-			DiagnosticDescriptors.WS1001_AddFinalNewLine.Id);
+		var title = Title;
+		context.RegisterCodeFix(
+			CodeAction.Create(
+				title,
+				ct => GetTransformedDocumentAsync(context.Document, root, ct),
+				equivalenceKey: title),
+			context.Diagnostics);
+	}
 
-		public sealed override FixAllProvider GetFixAllProvider() => WellKnownFixAllProviders.BatchFixer;
+	private Task<Document> GetTransformedDocumentAsync(Document document, SyntaxNode root, CancellationToken cancellationToken)
+	{
+		var oldToken = root.GetLastToken();
 
-		public sealed override Task RegisterCodeFixesAsync(CodeFixContext context)
-		{
-			var title = Title;
-			context.RegisterCodeFix(
-				CodeAction.Create(
-					title,
-					ct => GetTransformedDocumentAsync(context.Document, ct),
-					equivalenceKey: title),
-				context.Diagnostics);
-			return Task.CompletedTask;
-		}
+		var newTrivia = oldToken.TrailingTrivia.Insert(0, EndOfLineHelper.EndOfLine);
+		var newToken = oldToken.WithTrailingTrivia(newTrivia);
 
-		private async Task<Document> GetTransformedDocumentAsync(Document document, CancellationToken token)
-		{
-			var syntaxRoot = await document.GetSyntaxRootAsync(token).ConfigureAwait(false);
+		var newSyntaxRoot = root.ReplaceToken(oldToken, newToken);
+		var newDocument = document.WithSyntaxRoot(newSyntaxRoot);
 
-			var oldToken = syntaxRoot.GetLastToken();
-
-			var newTrivia = oldToken.TrailingTrivia.Insert(0, EndOfLineHelper.EndOfLine);
-			var newToken = oldToken.WithTrailingTrivia(newTrivia);
-			var newSyntaxRoot = syntaxRoot.ReplaceToken(oldToken, newToken);
-			var newDocument = document.WithSyntaxRoot(newSyntaxRoot);
-
-			return newDocument;
-		}
+		return Task.FromResult(newDocument);
 	}
 }
