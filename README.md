@@ -16,5 +16,5 @@ By default, all rules are of `Error` severity. So they _will_ fail the build, a 
 
 ## Rules
 
-- `WS1000`: TrailingWhitespace: Analyzer/Fixer for trailing whitespace
-- `WS1001`: MissingFinalNewLine: Analyzer/Fixer for a newline at the end of the file
+- `WS1000`: AvoidTrailingWhitespace: Analyzer/Fixer for trailing whitespace
+- `WS1001`: AddFinalNewLine: Analyzer/Fixer for inserting a newline at the end of the file
