@@ -1,6 +1,6 @@
 # MR.Analyzers.Whitespace
 
-[![Build status](https://img.shields.io/appveyor/ci/mrahhal/mr-attributedi/master.svg)](https://ci.appveyor.com/project/mrahhal/mr-analyzers-whitespace)
+[![CI](https://github.com/mrahhal/MR.Analyzers.Whitespace/actions/workflows/ci.yml/badge.svg)](https://github.com/mrahhal/MR.Analyzers.Whitespace/actions/workflows/ci.yml)
 [![NuGet version](https://badge.fury.io/nu/MR.Analyzers.Whitespace.svg)](https://www.nuget.org/packages/MR.Analyzers.Whitespace)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
@@ -10,7 +10,7 @@ By default, all rules are of `Error` severity. So they _will_ fail the build, a 
 
 ## Usage
 
-Add the following in your csproj:
+Add the following in any ItemGroup in your csproj:
 ```xml
 <PackageReference Include="MR.Analyzers.Whitespace" Version="1.0.2" PrivateAssets="All" />
 ```
