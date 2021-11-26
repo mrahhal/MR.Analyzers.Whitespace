@@ -15,16 +15,14 @@ namespace MR.Analyzers.Whitespace
 
 		public override void Initialize(AnalysisContext context)
 		{
+			context.EnableConcurrentExecution();
+			context.ConfigureGeneratedCodeAnalysis(GeneratedCodeAnalysisFlags.None);
+
 			context.RegisterSyntaxTreeAction(AnalyzeSyntaxTree);
 		}
 
 		private void AnalyzeSyntaxTree(SyntaxTreeAnalysisContext context)
 		{
-			if (context.Tree.IsGenerated())
-			{
-				return;
-			}
-
 			var root = context.Tree.GetRoot();
 
 			// Trailing whitespace
