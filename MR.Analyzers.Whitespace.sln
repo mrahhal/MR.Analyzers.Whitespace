@@ -9,6 +9,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4D84D0DA-0AF
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{7D845232-1964-41E6-AECF-C65405C5CE9C}"
+	ProjectSection(SolutionItems) = preProject
+		test\Directory.Build.props = test\Directory.Build.props
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MR.Analyzers.Whitespace", "src\MR.Analyzers.Whitespace\MR.Analyzers.Whitespace.csproj", "{518D73C8-6845-41D8-A8CC-BDFEAB1041DE}"
 EndProject
@@ -37,7 +40,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{89238275
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VSIX", "VSIX", "{51D9D999-533F-4B66-BFAE-CE03B0F19447}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MR.Analyzers.Whitespace.VSIX", "VSIX\MR.Analyzers.Whitespace.VSIX\MR.Analyzers.Whitespace.VSIX.csproj", "{CAE4F4DE-26DA-4822-B7EA-9BE516B9B04A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MR.Analyzers.Whitespace.VSIX", "VSIX\MR.Analyzers.Whitespace.VSIX\MR.Analyzers.Whitespace.VSIX.csproj", "{CAE4F4DE-26DA-4822-B7EA-9BE516B9B04A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
