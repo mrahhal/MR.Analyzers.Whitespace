@@ -11,9 +11,6 @@ on:
     branches:
     - main
 
-env:
-  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
-
 jobs:
   main:
     uses: mrahhal/.github/.github/workflows/ci-dotnet-package.yml@main
@@ -21,4 +18,4 @@ jobs:
       dotnet-version: 6.x.x
       dotnet-additional-version: 3.x.x
     secrets:
-      NUGET_ORG_API_KEY: ${{ secrets.NUGET_ORG_API_KEY }}
+      NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
