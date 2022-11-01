@@ -9,7 +9,7 @@ public static class DiagnosticDescriptors
 		public const string Trivia = nameof(Trivia);
 	}
 
-	public static readonly DiagnosticDescriptor WS1000_AvoidTrailingWhitespace = new(
+	public static readonly DiagnosticDescriptor WS1000_AvoidTrailingWhitespace = new DiagnosticDescriptor(
 		"WS1000",
 		"Avoid trailing whitespace",
 		"Avoid trailing whitespace",
@@ -17,7 +17,7 @@ public static class DiagnosticDescriptors
 		DiagnosticSeverity.Error,
 		isEnabledByDefault: true);
 
-	public static readonly DiagnosticDescriptor WS1001_AddFinalNewLine = new(
+	public static readonly DiagnosticDescriptor WS1001_AddFinalNewLine = new DiagnosticDescriptor(
 		"WS1001",
 		"Add final newline",
 		"Add final newline",

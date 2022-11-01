@@ -11,6 +11,12 @@
 
     <IncludeBuildOutput>false</IncludeBuildOutput>
     <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <DevelopmentDependency>true</DevelopmentDependency>
   </PropertyGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="AnalyzerReleases.Shipped.md" Condition="Exists('AnalyzerReleases.Shipped.md')" />
+    <AdditionalFiles Include="AnalyzerReleases.Unshipped.md" Condition="Exists('AnalyzerReleases.Unshipped.md')" />
+  </ItemGroup>
 
 </Project>
